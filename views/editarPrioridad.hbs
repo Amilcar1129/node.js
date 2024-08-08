@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Editar Prioridad</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Editar Prioridad</h1>
+  <form action="/prioridades/{{prioridad.id}}?_method=PUT" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="{{prioridad.nombre}}" required><br>
+    
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" name="descripcion" required>{{prioridad.descripcion}}</textarea><br>
+    
+    <button type="submit">Actualizar Prioridad</button>
+  </form>
+</body>
+</html>
