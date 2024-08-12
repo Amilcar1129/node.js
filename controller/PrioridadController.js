@@ -1,6 +1,5 @@
 import Prioridad from '../model/PrioridadModel.js';
 
-// Crear una nueva prioridad
 export const crearPrioridad = async (req, res) => {
   const { nombre, descripcion } = req.body;
   try {
@@ -11,7 +10,6 @@ export const crearPrioridad = async (req, res) => {
   }
 };
 
-// Listar todas las prioridades
 export const listarPrioridades = async (req, res) => {
   try {
     const prioridades = await Prioridad.findAll();
@@ -21,7 +19,6 @@ export const listarPrioridades = async (req, res) => {
   }
 };
 
-// Editar una prioridad existente (vista de formulario de edición)
 export const editarPrioridadVista = async (req, res) => {
   try {
     const prioridad = await Prioridad.findByPk(req.params.id);
@@ -31,7 +28,6 @@ export const editarPrioridadVista = async (req, res) => {
   }
 };
 
-// Actualizar una prioridad existente
 export const editarPrioridad = async (req, res) => {
   const { nombre, descripcion } = req.body;
   try {
@@ -42,7 +38,6 @@ export const editarPrioridad = async (req, res) => {
   }
 };
 
-// Eliminar una prioridad
 export const eliminarPrioridad = async (req, res) => {
   const { id } = req.params;
   try {

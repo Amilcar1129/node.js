@@ -5,44 +5,58 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <h1>Gestión de Prioridades</h1>
-  
-  <h2>Crear Prioridad</h2>
-  <form action="/prioridades" method="POST">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required><br>
+  <div class="container">
+    <h1>Gestión de Prioridades</h1>
     
-    <label for="descripcion">Descripción:</label>
-    <textarea id="descripcion" name="descripcion" required></textarea><br>
-    
-    <button type="submit">Crear Prioridad</button>
-  </form>
+    <div class="redirect-button">
+      <a href="/proyectos" class="btn green">Gestionar Proyectos</a>
+    </div>
 
-  {{#if mensaje}}
-    <p>{{mensaje}}</p>
-  {{/if}}
+    <div class="form-container">
+      <h2>Crear Prioridad</h2>
+      <form action="/prioridades" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+        
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea><br>
+        
+        <button type="submit" class="btn green">Crear Prioridad</button>
+      </form>
 
-  <h2>Lista de Prioridades</h2>
-  <table>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Acciones</th>
-    </tr>
-    {{#each prioridades}}
-      <tr>
-        <td>{{this.nombre}}</td>
-        <td>{{this.descripcion}}</td>
-        <td>
-          <form action="/prioridades/{{this.id}}?_method=DELETE" method="POST" style="display:inline;">
-            <button type="submit">Eliminar</button>
-          </form>
-          <form action="/prioridades/{{this.id}}/edit" method="GET" style="display:inline;">
-            <button type="submit">Editar</button>
-          </form>
-        </td>
-      </tr>
-    {{/each}}
-  </table>
+      {{#if mensaje}}
+        <p>{{mensaje}}</p>
+      {{/if}}
+    </div>
+
+    <div class="table-container">
+      <h2>Lista de Prioridades</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each prioridades}}
+            <tr>
+              <td>{{this.nombre}}</td>
+              <td>{{this.descripcion}}</td>
+              <td>
+                <form action="/prioridades/{{this.id}}?_method=DELETE" method="POST" style="display:inline;">
+                  <button type="submit" class="btn red">Eliminar</button>
+                </form>
+                <form action="/prioridades/{{this.id}}/edit" method="GET" style="display:inline;">
+                  <button type="submit" class="btn green">Editar</button>
+                </form>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
 </html>

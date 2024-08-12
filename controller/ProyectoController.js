@@ -1,7 +1,7 @@
 import Proyecto from '../model/ProyectoModel.js';
 import Prioridad from '../model/PrioridadModel.js';
 
-// Crear un nuevo proyecto
+
 export const crearProyecto = async (req, res) => {
   const { nombre, descripcion, fecha_inicio, fecha_fin, estado, prioridad_id } = req.body;
   try {
@@ -12,7 +12,7 @@ export const crearProyecto = async (req, res) => {
   }
 };
 
-// Listar todos los proyectos
+
 export const listarProyectos = async (req, res) => {
   try {
     const proyectos = await Proyecto.findAll({
@@ -25,13 +25,12 @@ export const listarProyectos = async (req, res) => {
   }
 };
 
-// Editar un proyecto existente (vista de formulario de edición)
 export const editarProyectoVista = async (req, res) => {
     try {
       const proyecto = await Proyecto.findByPk(req.params.id);
       const prioridades = await Prioridad.findAll();
   
-      // Marcar la prioridad seleccionada
+     
       const proyectoData = proyecto.get({ plain: true });
       const prioridadesData = prioridades.map(prioridad => {
         const prioridadData = prioridad.get({ plain: true });
@@ -48,7 +47,7 @@ export const editarProyectoVista = async (req, res) => {
   };
   
 
-// Actualizar un proyecto existente
+
 export const editarProyecto = async (req, res) => {
   const { nombre, descripcion, fecha_inicio, fecha_fin, estado, prioridad_id } = req.body;
   try {
@@ -59,7 +58,7 @@ export const editarProyecto = async (req, res) => {
   }
 };
 
-// Eliminar un proyecto
+
 export const eliminarProyecto = async (req, res) => {
   const { id } = req.params;
   try {
@@ -70,7 +69,7 @@ export const eliminarProyecto = async (req, res) => {
   }
 };
 
-// Filtrar proyectos por prioridad
+
 export const filtrarProyectos = async (req, res) => {
   const { prioridad_id } = req.query;
   try {
